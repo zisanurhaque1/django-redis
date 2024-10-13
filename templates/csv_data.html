@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *{
+            font-size: 12px;
+            color: white;
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<div class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-white shadow-md rounded-lg px-4 py-2">
+    <h1 class="text-black text-3xl font-semibold">{{data}}</h1>
+</div>
+<div class="flex flex-col">
+    <div class="flex bg-blue-600 px-10">
+        <div class="px-3 py-3 w-[8%]">
+            Social Media
+        </div>
+        <div class="px-3 py-3 w-[15%]">
+            Tags
+        </div>
+        <div class="px-3 py-3 w-[40%]">
+            Description
+        </div>
+        <div class="px-3 py-3 w-[12%]">
+            Author
+        </div>
+        <div class="px-3 py-3 w-[5%]">
+            Likes
+        </div><div class="px-3 py-3 w-[10%]">
+            Comments
+        </div><div class="px-3 py-3 w-[8%]">
+            Views
+        </div>
+        <div class="px-3 py-3 w-[12%]">
+            Created At
+        </div>
+    </div>
+    {% if trending_list %}
+    {% for row in trending_list %}
+    <div class="bg-slate-800 border-b border-b-slate-700 flex px-10">
+        <div class="px-3 py-4 capitalize w-[8%]">
+            {{row.from_social}}
+        </div>
+        <div class="px-3 py-4 w-[15%]">
+            #{{row.input_text}}
+        </div>
+        <div class="px-3 py-4 w-[40%]">
+            {{row.text}}
+        </div>
+        <div class="px-3 py-4 w-[12%]">
+            {{row.author_meta}}
+        </div>
+        <div class="px-3 py-4 w-[5%]">
+            {{row.likes_count}}
+        </div>
+        <div class="px-3 py-4 w-[10%]">
+            {{row.comments_count}}
+        </div>
+        <div class="px-3 py-4 w-[8%]">
+            {{row.views_count}}
+        </div>
+        <div class="px-3 py-4 w-[12%]">
+            {{row.creation_date}}
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="flex justify-center py-20 text-gray-500 text-3xl">Sorry no data found</div>
+    {% endif %}
+</div>
+</body>
+</html>
